@@ -1,0 +1,88 @@
+* {
+  border: none;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #ffffff;
+  margin: 5px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  border-radius: 12px;
+  padding: 0 8px;
+  background: rgba(0, 0, 0, 0.3);
+  /* transparan, biar blur-nya kelihatan */
+}
+
+#battery,
+#custom-clipboard,
+#custom-colorpicker,
+#custom-powerDraw,
+#bluetooth,
+#pulseaudio,
+#network,
+#disk,
+#memory,
+#backlight,
+#cpu,
+#temperature,
+#custom-weather,
+#idle_inhibitor,
+#jack,
+#tray,
+#window,
+#workspaces,
+#clock {
+  padding: 0 5px;
+}
+
+#pulseaudio {
+  padding-top: 3px;
+}
+
+#temperature.critical,
+#pulseaudio.muted {
+  color: #FF0000;
+  padding-top: 0;
+}
+
+
+
+
+#clock {
+  color: #5fd1fa;
+}
+
+#battery.charging {
+  color: #ffffff;
+  background-color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+  background-color: #ffbe61;
+  color: rgba(0, 0, 0, 0);
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}

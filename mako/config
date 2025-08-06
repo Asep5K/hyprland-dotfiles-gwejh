@@ -1,0 +1,12 @@
+font=MesloLGS NF Bold 10
+background-color=#45454967
+text-color=#ffffff
+border-color=#f70757ff
+border-size=1
+padding=8
+margin=12
+anchor=top-center
+default-timeout=1000
+border-radius=28
+max-visible=2
+layer=overlay

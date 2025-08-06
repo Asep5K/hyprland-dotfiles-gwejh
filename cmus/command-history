@@ -1,0 +1,20 @@
+restart
+save
+set color_titleline_bg=blue
+set color_sel_fg=gray
+set color_sel_bg=gray
+set color_titleline_bg=red
+set color_titleline_fg=white
+set color_titleline_fg=red
+set color_win_fg=white
+set color_win_fg=red
+filter add
+filter 
+filter ef
+add
+add ~
+clear
+Add ~/Music
+add ~/Music
+live-filter mp4
+live-filter 
