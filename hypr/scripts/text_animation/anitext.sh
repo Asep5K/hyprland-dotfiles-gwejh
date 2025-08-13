@@ -1,3 +1,5 @@
+#!/bin/bash
+
 s=("Howdy my Sigma!" "Consider taking a bath?" "Arch is so GOATed UwU" "VScode > Neovim FrFr")
 scripttext=~/.config/hypr/scripts/text_animation/scripttext
 ptx=0

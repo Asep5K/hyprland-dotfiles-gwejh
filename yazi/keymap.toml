@@ -21,3 +21,9 @@ desc = "Cd to root"
 on   = [ "g", "u" ]
 run  = "cd /run/media/histed"
 desc = "Cd to Removable drive/usb drive"
+
+# cd to .local
+[[mgr.prepend_keymap]]
+on   = [ "g", "l" ]
+run  = "cd $HOME/.local"
+desc = "Cd to ~/.local"

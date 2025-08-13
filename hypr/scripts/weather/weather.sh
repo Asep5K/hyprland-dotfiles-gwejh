@@ -3,7 +3,8 @@
 weathertext="$HOME/.config/hypr/scripts/weather/weathertext"
 
 while true; do
-    weather=$(curl -s "https://wttr.in/$(curl -s https://ipinfo.io/json | grep -o '"city": *"[^"]*"' | cut -d '"' -f 4)?format=%25l%3A%20%25C%2C%20%25t")
+    city=$(curl -s https://ipinfo.io/json | grep -o '"city": *"[^"]*"' | cut -d '"' -f 4 | sed 's/ /%20/g')
+    weather=$(curl -s "https://wttr.in/$city?format=%25l%3A%20%25C%2C%20%25t")
     weather_len=${#weather}
     output=""
     i=0

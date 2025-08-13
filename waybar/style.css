@@ -1,88 +1,142 @@
 * {
-  border: none;
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 13px;
-  min-height: 0;
+    font-size: 15px;
+    font-family: "CodeNewRoman Nerd Font Propo";
 }
 
 window#waybar {
-  background: transparent;
-  color: #ffffff;
-  margin: 5px;
+    all: unset;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
-  border-radius: 12px;
-  padding: 0 8px;
-  background: rgba(0, 0, 0, 0.3);
-  /* transparan, biar blur-nya kelihatan */
+    padding: 1px;
+    border-radius: 15px;
+    background: rgba(49, 49, 58, 0.6);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, .6);
+    border: 1px solid #af1414;
 }
 
-#battery,
-#custom-clipboard,
-#custom-colorpicker,
-#custom-powerDraw,
+.modules-left {
+    margin: 0 7px 0px;
+}
+
+.modules-center {
+    margin: 0 0 5px 0;
+}
+
+.modules-right {
+    margin: 0 7px 0px 0;
+}
+
+
+#power:hover,
+#clock:hover,
+#custom-pacman:hover,
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover {
+    transition: all .3s ease;
+    color: #f38ba8;
+}
+
+#power,
+#custom-notification,
+#clock,
+#custom-pacman,
 #bluetooth,
-#pulseaudio,
 #network,
-#disk,
-#memory,
-#backlight,
+#battery,
 #cpu,
-#temperature,
-#custom-weather,
-#idle_inhibitor,
-#jack,
-#tray,
-#window,
-#workspaces,
-#clock {
-  padding: 0 5px;
-}
-
-#pulseaudio {
-  padding-top: 3px;
-}
-
-#temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
-
-
-
-#clock {
-  color: #5fd1fa;
+#memory,
+#temperature {
+    padding: 0px 5px;
+    color: #cdd6f4;
+    transition: all .3s ease;
 }
 
 #battery.charging {
-  color: #ffffff;
-  background-color: #26A65B;
+    color: #26A65B;
 }
 
 #battery.warning:not(.charging) {
-  background-color: #ffbe61;
-  color: rgba(0, 0, 0, 0);
+    color: #ffbe61;
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+    color: #f53c3c;
+    animation: blink 0.5s linear infinite alternate;
 }
 
+#workspaces {
+    padding: 0px 5px;
+}
 
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
+#workspaces button {
+    all: unset;
+    padding: 0px 5px;
+    color: rgba(243, 139, 168, 0.4);
+    transition: all .2s ease;
+}
+
+#workspaces button:hover {
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.active {
+    color: #f38ba8;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty {
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty.active {
+    color: #f38ba8;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#group-expand,
+#custom-expand,
+#custom-colorpicker,
+#custom-endpoint,
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#custom-expand {
+    color: rgba(205, 214, 244, 0.2);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+}
+
+#custom-expand:hover {
+    color: rgba(255, 255, 255, .2);
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+}
+
+#custom-endpoint {
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+}
+
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease;
 }
