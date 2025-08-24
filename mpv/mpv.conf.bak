@@ -1,0 +1,21 @@
+# vo=gpu
+# gpu-api=opengl
+# hwdec=vaapi
+# vo=gpu
+# gpu-context=x11
+# loop-playlist=inf
+# resume-playback=yes
+# save-position-on-quit=yes
+
+# Video output
+vo=gpu
+gpu-api=opengl
+gpu-context=x11   # pakai x11 agar DRI2, mencegah flickering
+
+# Hardware decoding
+hwdec=vaapi
+
+# Playlist & resume
+loop-playlist=inf
+resume-playback=yes
+save-position-on-quit=yes

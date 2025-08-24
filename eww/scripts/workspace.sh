@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ws() {
-    local workspaces=6
+    local workspaces=10
     local workspace_icon=()
     local workspace_class=()
     local output=""

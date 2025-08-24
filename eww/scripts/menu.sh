@@ -4,36 +4,33 @@ names=(
   "Brave Browser"
   "Btop"
   "Discord"
-  "Gimp"
-  # "Kdenlive"
-  "Telegram"
+  "Minecraft Launcher"
   "Neovim"
-  "Vscode"
-  "yazi"
+  "OBS Studio"
+  "Spotify"
+  "VScode"
 )
 
 execs=(
   "brave"
   "btop"
   "/usr/bin/discord"
-  "gimp"
-  # "kdenlive
-  "Telegram"
+  "java -jar $HOME/Downloads/TLauncher.jar"
   "nvim"
+  "obs"
+  "LD_PRELOAD=/usr/lib/spotify-adblock.so spotify"
   "code"
-  "yazi"
 )
 
 icons=(
   "/usr/share/icons/hicolor/128x128/apps/brave-desktop.png"
   "/usr/share/icons/hicolor/scalable/apps/btop.svg"
   "/usr/share/icons/hicolor/128x128/apps/discord.png"
-  "/usr/share/icons/hicolor/128x128/apps/gimp.png"
-  # "/usr/share/icons/hicolor/128x128/apps/kdenlive.png"
-  "/usr/share/icons/hicolor/128x128/apps/org.telegram.desktop.png"
+  "/usr/share/icons/Dracula/scalable/apps/minecraft-launcher.svg"
   "/usr/share/icons/hicolor/128x128/apps/nvim.png"
+  "/usr/share/icons/hicolor/256x256/apps/com.obsproject.Studio.png"
+  "/usr/share/icons/hicolor/128x128/apps/spotify.png"
   "/usr/share/icons/hicolor/128x128/apps/vscode.png"
-  "/usr/share/icons/hicolor/128x128/apps/yazi.png"
 )
 
 terminal=(
@@ -41,8 +38,8 @@ terminal=(
   true
   false
   false
-  false
   true
+  false
   false
   false
 )

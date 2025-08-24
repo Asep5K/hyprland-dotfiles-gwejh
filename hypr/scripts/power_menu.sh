@@ -49,11 +49,15 @@ element selected {
 case "$action" in
   "⏻ Shutdown")
     if confirm "Are you sure you want to shutdown?"; then
+      notify-send -t 3000 "Shutdown in 5 seconds"
+      sleep 5
       poweroff
     fi
     ;;
   "🔁 Reboot")
     if confirm "Are you sure you want to reboot?"; then
+      notify-send -t 3000 "Rebooting in 5 seconds"
+      sleep 5
       reboot
     fi
     ;;

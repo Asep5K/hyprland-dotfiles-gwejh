@@ -25,9 +25,9 @@ case "$CHOICE" in
     echo "Launching Minecraft Java..."
     java -jar ~/Downloads/TLauncher.jar
     ;;
-  "Minceraft Bedrock")
-    echo "Launching Mineraft Bedrock..."
-    rofi -show drun
+  "Minecraft Bedrock")
+    echo "Launching Minecraft Bedrock..."
+    /usr/bin/mcpelauncher-ui-qt
     ;;
   "Option 3")
     echo "Kamu pilih Option 3"
