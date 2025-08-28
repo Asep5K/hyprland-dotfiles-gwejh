@@ -1,24 +1,8 @@
 #!/bin/bash
 
-theme="/$HOME/.config/rofi/themes/asepbiji.rasi"
+theme=$HOME/.local/share/rofi/themes/simple-tokyonight.rasi
+theme2=$HOME/.local/share/rofi/themes/spotlight-dark.rasi
 
-
-EXCLUDE="Hyprland"
-
-# Ambil semua PID yang bisa di-kill dan simpan ke variabel
-KILLABLE_PIDS=($(ps -u $USER -o pid=,comm= | awk -v excl="$EXCLUDE" '$2!=excl {print $1}'))
-
-
-pwf() {
-  notify-send -t 2000 "Shutdown in 5 seconds"
-  sleep 3
-  systemctl poweroff
-}
-rbt() {
-  notify-send -t 2000 "Rebooting in 5 seconds"
-  sleep 3
-  systemctl reboot
-}
 confirm() {
   local question="$1"
   local answer=$(echo -e "Yes\nNo" | rofi -dmenu -p "$question" -theme  "$theme")
@@ -36,12 +20,16 @@ action=$(echo -e "$options" | rofi -dmenu -p "Power (or type command):" -theme "
 case "$action" in
   "⏻ Shutdown")
     if confirm "Are you sure you want to shutdown?"; then
-      pwf
+      notify-send -t 3000 "Shutdown in 5 seconds"
+      sleep 5
+      poweroff
     fi
     ;;
   "🔁 Reboot")
     if confirm "Are you sure you want to reboot?"; then
-     rbt
+      notify-send -t 3000 "Rebooting in 5 seconds"
+      sleep 5
+      reboot
     fi
     ;;
   "🔒 Lockscreen")

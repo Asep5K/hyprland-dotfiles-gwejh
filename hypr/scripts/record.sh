@@ -3,6 +3,7 @@
 # 📁 Folder hasil rekaman
 SAVE_DIR="$HOME/Videos/Recordings"
 mkdir -p "$SAVE_DIR"
+f="$HOME/Pictures/kurumi/foto_008.jpg"
 
 # 📄 File penanda recording aktif
 PID_FILE="/tmp/toggle_recording.pid"
@@ -33,7 +34,7 @@ if [ ! -f "$PID_FILE" ]; then
     # Simpan PID kedua proses
     echo "$VIDEO_PID:$AUDIO_PID" > "$PID_FILE"
 
-    notify-send "🔴 Rekaman dimulai" "Tekan shortcut lagi untuk berhenti"
+    notify-send -t 2000 -i "$f" "🔴 Recording started" "Press the shortcut again to stop"
 
 else
     # 🟢 Sedang rekam → HENTIKAN + GABUNG
@@ -51,18 +52,13 @@ else
     wait "$AUDIO_PID"
 
     # Gabungin
-    notify-send "🔄 Gabung audio + video..."
+    notify-send -i "$f" "🔄 Merging audio + video..."
     ffmpeg -y -i "$VIDEO_FILE" -f s16le -ar 48000 -ac 2 -i "$AUDIO_FILE" \
            -c:v copy -c:a aac "$FINAL_FILE"
 
     # Bersih-bersih
     rm "$VIDEO_FILE" "$AUDIO_FILE" "$PID_FILE" /tmp/toggle_recording_files
 
-    notify-send "✅ Rekaman selesai" "$FINAL_FILE"
-    echo "✅ Rekaman selesai: $FINAL_FILE"
+    notify-send -i "$f" "✅ Recording finished" "$FINAL_FILE"
+    echo "✅ Recording finished: $FINAL_FILE"
 fi
-
-
-
-#  gw recornya pake beginian
-

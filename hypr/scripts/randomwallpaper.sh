@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# swww-daemon
-wallpapersDir="$HOME/.config/hypr/wallpaper"
+# 📂 Folder wallpaper
+wallpapersDir="$HOME/Pictures/Wallpaper"
 wallpapers=("$wallpapersDir"/*)
 
 if [ ${#wallpapers[@]} -eq 0 ]; then
@@ -9,29 +9,55 @@ if [ ${#wallpapers[@]} -eq 0 ]; then
     exit 1
 fi
 
-# File untuk simpan index animasi & wallpaper terakhir
+# 📄 File index cache
 indexFile="$HOME/.cache/last_index"
 
-# Baca index dari file, kalau gak ada mulai dari 0
-if [ -f "$indexFile" ]; then
-    read transitionIndex wallpaperIndex < "$indexFile"
-else
-    transitionIndex=0
-    wallpaperIndex=0
-fi
-
+# 🎬 Daftar animasi
 transitions=("grow" "outer" "wipe" "center" "wipe")
 transitionCount=${#transitions[@]}
 wallpaperCount=${#wallpapers[@]}
 
-# Ambil animasi & wallpaper sesuai index
-transitionType=${transitions[$transitionIndex]}
-selectedWallpaper="${wallpapers[$wallpaperIndex]}"
+# 🔧 Fungsi ganti wallpaper sekali
+change_wallpaper() {
+    if [ -f "$indexFile" ]; then
+        read transitionIndex wallpaperIndex < "$indexFile"
+    else
+        transitionIndex=0
+        wallpaperIndex=0
+    fi
 
-swww img "$selectedWallpaper" --transition-type "$transitionType"  --transition-fps 60 --transition-duration=0.5
+    transitionType=${transitions[$transitionIndex]}
+    selectedWallpaper="${wallpapers[$wallpaperIndex]}"
 
-# Update index dan simpan kembali ke file (loop ulang)
-transitionIndex=$(( (transitionIndex + 1) % transitionCount ))
-wallpaperIndex=$(( (wallpaperIndex + 1) % wallpaperCount ))
+    swww img "$selectedWallpaper" \
+        --transition-type "$transitionType" \
+        --transition-fps 60 \
+        --transition-duration=0.5
 
-echo "$transitionIndex $wallpaperIndex" > "$indexFile"
+    transitionIndex=$(( (transitionIndex + 1) % transitionCount ))
+    wallpaperIndex=$(( (wallpaperIndex + 1) % wallpaperCount ))
+
+    echo "$transitionIndex $wallpaperIndex" > "$indexFile"
+}
+
+# 🔄 Mode daemon (loop)
+daemon_mode() {
+    interval=${1:-300} # default 300 detik = 5 menit
+    while true; do
+        change_wallpaper
+        sleep "$interval"
+    done
+}
+
+# 🛠️ Main: cek argumen
+case "$1" in
+    daemon)
+        daemon_mode "$2" # contoh: ./script.sh daemon 120 (tiap 2 menit)
+        ;;
+    next)
+        change_wallpaper # ganti sekali (buat keybind)
+        ;;
+    *)
+        echo "Usage: $0 {daemon [detik]|next}"
+        ;;
+esac
