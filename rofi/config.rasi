@@ -1,4 +1,13 @@
+//@theme "/home/iuno/.config/rofi/themes/sidebar-v2.rasi"
 
-//@theme "/home/histed/.local/share/rofi/themes/rounded-pink-dark_1.rasi"
+//@theme "/home/iuno/.config/rofi/themes/quickapps.rasi"
 
-@theme "/home/histed/.local/share/rofi/themes/rounded-white.rasi"
+//@theme "/home/iuno/.config/rofi/themes/rounded-nord-dark.rasi"
+
+//@theme "/home/iuno/.config/rofi/themes/clipboard.rasi"
+
+//@theme "/home/iuno/.config/rofi/themes/selector.rasi"
+
+//@theme "/home/iuno/.config/rofi/themes/spotlight.rasi"
+
+@theme "/home/iuno/.config/rofi/themes/launchpad.rasi"
