@@ -1,142 +1,102 @@
+@import "/home/iuno/config/cache/wal/colors-waybar.css";
+
 * {
-    font-size: 15px;
-    font-family: "CodeNewRoman Nerd Font Propo";
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 5px;
+    min-height: 0;
 }
 
-window#waybar {
-    all: unset;
+window,
+tooltip {
+    background-color: @background;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-    padding: 1px;
-    border-radius: 15px;
-    background: rgba(49, 49, 58, 0.6);
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, .6);
-    border: 1px solid #af1414;
-}
-
-.modules-left {
-    margin: 0 7px 0px;
-}
-
-.modules-center {
-    margin: 0 0 5px 0;
-}
-
-.modules-right {
-    margin: 0 7px 0px 0;
-}
-
-
-#power:hover,
-#clock:hover,
-#custom-pacman:hover,
-#custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover {
-    transition: all .3s ease;
-    color: #f38ba8;
-}
-
-#power,
-#custom-notification,
-#clock,
-#custom-pacman,
-#bluetooth,
-#network,
-#battery,
-#cpu,
-#memory,
-#temperature {
-    padding: 0px 5px;
-    color: #cdd6f4;
-    transition: all .3s ease;
-}
-
-#battery.charging {
-    color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    color: #ffbe61;
-}
-
-#battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation: blink 0.5s linear infinite alternate;
+#waybar {
+    background: alpha(@background, 0.6);
+    border-radius: 0;
 }
 
 #workspaces {
-    padding: 0px 5px;
+    margin: 1px 0;
 }
 
 #workspaces button {
-    all: unset;
-    padding: 0px 5px;
-    color: rgba(243, 139, 168, 0.4);
-    transition: all .2s ease;
+    color: @foreground;
+    border: none;
+    padding: 0 5px;
 }
 
 #workspaces button:hover {
-    color: transparent;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    color: @pink;
+    transition: none;
+    border-bottom: 1px solid @pink;
+    padding: 0 8px;
 }
 
 #workspaces button.active {
-    color: #f38ba8;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+    color: @pink;
+    border: 2px solid @pink;
+    padding: 0 8px;
+    margin: 0 2px;
 }
 
-#workspaces button.empty {
-    color: transparent;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+#workspaces button.urgent {
+    background-color: @red;
+    padding: 0 8px;
 }
 
-#workspaces button.empty:hover {
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+#custom-splash {
+    color: @foreground;
+    margin: 1px 0;
+    padding: 0 100px;
 }
 
-#workspaces button.empty.active {
-    color: #f38ba8;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+#custom-menu,
+#tray,
+#bluetooth,
+#network,
+#battery,
+#pulseaudio,
+#clock {
+    color: @foreground;
+    margin: 1px 0;
+    padding: 0 10px;
 }
 
-#group-expand,
-#custom-expand,
-#custom-colorpicker,
-#custom-endpoint,
-#tray {
-    padding: 0px 5px;
-    transition: all .3s ease;
+#custom-menu:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover,
+#clock:hover {
+    background-color: alpha(@select, 0.6);
 }
 
-#custom-expand {
-    color: rgba(205, 214, 244, 0.2);
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+#bluetooth {
+    color: @yellow;
 }
 
-#custom-expand:hover {
-    color: rgba(255, 255, 255, .2);
-    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+#network {
+    color: @green;
 }
 
-#custom-endpoint {
-    color: transparent;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+#battery {
+    color: @purple;
 }
 
-#tray menu * {
-    padding: 0px 5px;
-    transition: all .3s ease;
+#pulseaudio {
+    color: @orange;
 }
 
-#tray menu separator {
-    padding: 0px 5px;
-    transition: all .3s ease;
+#clock {
+    margin-right: 10px;
+    color: @blue;
+}
+
+#custom-power {
+    margin-left: 0px;
+    padding: 0px 10px 0 15px;
 }

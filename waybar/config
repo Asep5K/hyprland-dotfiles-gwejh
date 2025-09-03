@@ -1,161 +1,105 @@
 {
-    "layer": "top",
-    "position": "top",
-    "reload_style_on_change": true,
+    "position": "bottom",
     "modules-left": [
-        "custom/notification",
-        "custom/pacman",
-        "hyprland/workspaces",
-        "tray"
+        "custom/menu",
+        "clock",
+        "custom/splash"
     ],
     "modules-center": [
-        "clock"
+        "hyprland/workspaces"
     ],
     "modules-right": [
-        "group/expand",
+        "tray",
+        // "bluetooth",
         "network",
         "battery",
-        "power"
+        "pulseaudio"
     ],
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-            "default": "",
-            "empty": ""
-        },
-        "persistent-workspaces": {
-            "*": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ]
-        }
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "",
-        "on-click": "rofi -show drun",
-        "escape": true
-    },
-    "clock": {
-        "format": "{:%I:%M:%S %p} ",
-        "interval": 1,
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "calendar": {
-            "format": {
-                "today": "<span color='#fAfBfC'><b>{}</b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "shift_down",
-            "on-click": "shift_up"
-        }
-    },
-    "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "",
-        "tooltip-format-disconnected": "Error",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} 🖧 ",
-        "on-click": "kitty nmtui"
-    },
-    "bluetooth": {
-        "format-on": "󰂯",
-        "format-off": "BT-off",
-        "format-disabled": "󰂲",
-        "format-connected-battery": "{device_battery_percentage}% 󰂯",
-        "format-alt": "{device_alias} 󰂯",
-        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-        "on-click-right": "blueman-manager"
-    },
-    "battery": {
-        "interval": 30,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
-        "format-plugged": "{capacity}% 󰂄 ",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-        ]
-    },
-    "custom/pacman": {
-        "format": "󰅢 {}",
-        "interval": 30,
-        "exec": "checkupdates | wc -l",
-        "exec-if": "exit 0",
-        "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-        "signal": 8,
-        "tooltip": false
-    },
-    "custom/expand": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/endpoint": {
-        "format": "|",
-        "tooltip": false
-    },
-    "group/expand": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": [
-            "power",
-            "custom/expand",
-            "custom/colorpicker",
-            "cpu",
-            "memory",
-            "temperature",
-            "custom/endpoint",
-            "bluetooth"
-        ]
-    },
-    "custom/colorpicker": {
+    "custom/splash": {
+        "exec": "hyprctl splash",
         "format": "{}",
-        "return-type": "json",
-        "interval": "once",
-        "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
-        "on-click": "~/.config/waybar/scripts/colorpicker.sh",
-        "signal": 1
+        "on-click": "kitty animeku-cli",
+        "tooltip": false
     },
-    "cpu": {
-        "format": "󰻠",
-        "tooltip": true
+    "custom/menu": {
+        "format": "",
+        "icon-size": 50,
+        "tooltip": false,
+        "on-click": "rofi -show drun -show-icons -icon-theme Papirus"
     },
-    "memory": {
-        "format": ""
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": ""
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "cursor": true
     },
     "tray": {
         "icon-size": 20,
-        "spacing": 15
+        "spacing": 10,
+        "cursor": true
+    },
+    // "bluetooth": {
+    // "format": " 󰂯 ",
+    // "format-disabled": " 󰂲 ",
+    // "format-connected": " 󰂱 ",
+    // "on-click": "blueman-manager"
+    // },
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  Ethernet",
+        "format-linked": "  Linked (No IP)",
+        "format-disconnected": "  Disconnected",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/launcher/rofi-wifi-menu.sh"
+    },
+    "battery": {
+        "states": {
+            "good": 85,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+        ],
+        "tooltip-format": "{time}",
+        "cursor": false
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "  {volume}%",
+        "format-bluetooth": " {volume}%",
+        "format-bluetooth-muted": "  {volume}%",
+        "format-icons": {
+            "headphone": " ",
+            "headset": " ",
+            "default": [
+                " "
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "tooltip-format": "<span size='15000'><tt>{calendar}</tt></span>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#F5C2E7'><b>{}</b></span>",
+                "weekdays": "<span color='#89B4FA'><b>{}</b></span>",
+                "days": "<span color='#CDD6F4'><b>{}</b></span>",
+                "today": "<span color='#F9E2AF'><b>{}</b></span>"
+            }
+        },
+        "on-click": "swaync-client -t -sw"
     }
 }
