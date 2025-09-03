@@ -110,6 +110,12 @@ fastfetch --config hyde/*.jsonc
       "format": "{days} days"
     },
     {
+      "type": "command",
+      "key": "   Firmware Age",
+      "keyColor": "red",
+      "text": "hostnamectl | awk -F: '/Firmware Age/ {gsub(/^[ \t]+/, \"\", $2); print $2}'"
+    },
+    {
       "type": "uptime",
       "key": "  󱫐 Uptime ",
       "keyColor": "red"
