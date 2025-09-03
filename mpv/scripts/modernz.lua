@@ -109,7 +109,7 @@ local user_opts = {
     speed_button_click = 1,                -- speed change amount per click
     speed_button_scroll = 0.25,            -- speed change amount on scroll
 
-    loop_in_pause = true,                  -- enable looping by right-clicking pause
+    _in_pause = true,                  -- enable ing by right-clicking pause
 
     buttons_always_active = "none",        -- force buttons to always be active. can add: playlist_prev, playlist_next
 
