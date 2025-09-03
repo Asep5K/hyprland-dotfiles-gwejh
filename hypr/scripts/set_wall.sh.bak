@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+wall="$1"
+
+# Ganti wallpaper
+swww img "$wall" --transition-type any --transition-duration 2
+
+# Generate warna dari wallpaper
+wal -i "$wall"
+
+# Reload Hyprland biar warna border ikut pywal
+hyprctl reload

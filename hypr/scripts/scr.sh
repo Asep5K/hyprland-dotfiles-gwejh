@@ -3,24 +3,29 @@
 full_screenshot() {
     dir="$HOME/Pictures/Screenshot/"
     mkdir -p "$dir"
-    
-    FILE="$dir$(date +%Y-%m-%dT%H:%M:%S,%N%:z).png"
-    
+    FILE="${dir}Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
     grimblast copysave screen "$FILE"
     notify-send "Screenshot Taken" "$(basename "$FILE")" -i "$FILE" -t 3000
 }
+
 area_screenshot() {
     dir="$HOME/Pictures/Screencut/"
     mkdir -p "$dir"
-
-    FILE="$dir$(date +%Y-%m-%dT%H:%M:%S,%N%:z).png"
-
-
+    FILE="${dir}Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
     grimblast copysave area "$FILE"
     notify-send "Screenshot Taken" "$(basename "$FILE")" -i "$FILE" -t 3000
 }
+
 copy_clipboard() {
     grimblast --notify copy
+}
+
+windowactive() {
+    dir="$HOME/Pictures/Screenshot/"
+    mkdir -p "$dir"
+    FILE="${dir}Screenshot_$(date +%Y-%m-%d_%H-%M-%S).png"
+    grimblast --wait 1 copysave active "$FILE"
+    notify-send "Screenshot Taken" "$(basename "$FILE")" -i "$FILE" -t 3000
 }
 
 if [[ "$1" == "full" ]]; then
@@ -29,6 +34,8 @@ elif [[ "$1" == "area" ]]; then
     area_screenshot
 elif [[ "$1" == "copy" ]]; then
     copy_clipboard
+elif [[ "$1" == "active" ]]; then
+    windowactive
 else
     echo "Usage: $0 full|area"
 fi

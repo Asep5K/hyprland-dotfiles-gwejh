@@ -29,14 +29,24 @@ change_wallpaper() {
     transitionType=${transitions[$transitionIndex]}
     selectedWallpaper="${wallpapers[$wallpaperIndex]}"
 
+    # Ganti wallpaper pakai swww
     swww img "$selectedWallpaper" \
-        --transition-type "$transitionType" \
-        --transition-fps 60 \
-        --transition-duration=0.5
+        --transition-type any \
+        --transition-duration 2
+    # swww img "$selectedWallpaper" \
+    # --transition-type any \ 
+    # --transition-duration 2
 
+    ~/.config/hypr/scripts/wallpaper_effects.sh
+    # 🔥 Generate warna pywal
+    wal -i "$selectedWallpaper"
+
+    # 🔄 Reload waybar & rofi biar ikut warna baru
+
+
+    # Update index
     transitionIndex=$(( (transitionIndex + 1) % transitionCount ))
     wallpaperIndex=$(( (wallpaperIndex + 1) % wallpaperCount ))
-
     echo "$transitionIndex $wallpaperIndex" > "$indexFile"
 }
 
