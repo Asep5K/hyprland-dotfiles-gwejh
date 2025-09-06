@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # 📂 Folder wallpaper
 wallpapersDir="$HOME/Pictures/Wallpaper"
@@ -31,18 +31,13 @@ change_wallpaper() {
 
     # Ganti wallpaper pakai swww
     swww img "$selectedWallpaper" \
-        --transition-type any \
+        --transition-type "$transitionType" \
         --transition-duration 2
-    # swww img "$selectedWallpaper" \
-    # --transition-type any \ 
-    # --transition-duration 2
 
-    ~/.config/hypr/scripts/wallpaper_effects.sh
+    $HOME/.config/hypr/scripts/mako.sh
+
     # 🔥 Generate warna pywal
     wal -i "$selectedWallpaper"
-
-    # 🔄 Reload waybar & rofi biar ikut warna baru
-
 
     # Update index
     transitionIndex=$(( (transitionIndex + 1) % transitionCount ))

@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # 📁 Folder hasil rekaman
 SAVE_DIR="$HOME/Videos/Recordings"
 mkdir -p "$SAVE_DIR"
-f="$HOME/Pictures/kurumi/foto_008.jpg"
+
+f="/var/lib/AccountsService/icons/$USER"
 
 # 📄 File penanda recording aktif
 PID_FILE="/tmp/toggle_recording.pid"
@@ -12,10 +13,10 @@ if [ ! -f "$PID_FILE" ]; then
     # 🔴 Belum rekam → MULAI REKAMAN
 
     # 🕒 Nama file unik
-    FILENAME="record_$(date +'%Y-%m-%d_%H-%M-%S')"
+    FILENAME="Recording_$(date +'%Y-%m-%d_%H-%M-%S')"
     VIDEO_FILE="$SAVE_DIR/${FILENAME}.mp4"
     AUDIO_FILE="$SAVE_DIR/${FILENAME}.wav"
-    FINAL_FILE="$SAVE_DIR/${FILENAME}_final.mp4"
+    FINAL_FILE="$SAVE_DIR/${FILENAME}_Final.mp4"
 
     # 🔊 Audio dari device/output (bukan mic)
     AUDIO_SOURCE="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
@@ -28,7 +29,7 @@ if [ ! -f "$PID_FILE" ]; then
     AUDIO_PID=$!
 
     # 🎥 Rekam video di background
-    wf-recorder -f "$VIDEO_FILE" &
+    wf-recorder --no-damage -r 60 -f "$VIDEO_FILE" &
     VIDEO_PID=$!
 
     # Simpan PID kedua proses

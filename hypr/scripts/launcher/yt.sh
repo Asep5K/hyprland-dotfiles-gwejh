@@ -1,15 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # 🎨 Themes
 theme1="$HOME/.config/rofi/themes/yt-dlp.rasi"
 theme2="$HOME/.config/rofi/themes/list.rasi"
+f="/var/lib/AccountsService/icons/$USER"
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:$PATH"
+
+if pidof rofi > /dev/null; then
+    pkill rofi
+fi
+
 
 # 📥 Input URL
 url=$(rofi -dmenu -p "Enter YouTube URL:" -theme "$theme1")
 
 if ! curl -Is https://youtube.com >/dev/null 2>&1; then
-    notify-send "❌ Error" "No Internet connection!"
+    notify-send -i "$f" "❌ Error" "No Internet connection!"
     exit 1
 fi
 
@@ -17,7 +23,7 @@ fi
 if [ -z "$url" ]; then
     exit 0
 elif [[ ! "$url" =~ ^https?://(www\.)?(youtube\.com|youtu\.be)/ ]]; then
-    notify-send -t 3000 "Invalid URL" "Only YouTube links are allowed!"
+    notify-send -i "$f" "Invalid URL" "Only YouTube links are allowed!"
     exit 1
 fi
 
@@ -42,52 +48,52 @@ mp3() {
     filename="%(title)s.%(ext)s"
     outdir="$HOME/Music"
     mkdir -p "$outdir"
-    notify-send "🎵 Downloading..." "Audio (MP3)"
+    notify-send -i "$f" "🎵 Downloading..." "Audio (MP3)"
 
     yt-dlp -x --audio-format mp3 \
         -o "$outdir/$filename" \
         "$url"
 
-    notify-send "Download complete"
+    notify-send -i "$f" "Download complete"
 }
 
 # 🎬 Best quality video
 bestvideo() {
-    filename="%(title)s.%(ext)s"
+    filename="%(title)s_%(height)sp.%(ext)s"
     outdir="$HOME/Videos"
     mkdir -p "$outdir"
-    notify-send "🎬 Downloading..." "Best quality video"
+    notify-send -i "$f" "🎬 Downloading..." "Best quality video"
 
     yt-dlp -f bestvideo+bestaudio/best --merge-output-format mp4 \
         -o "$outdir/$filename" \
         "$url"
 
-    notify-send "Download complete"
+    notify-send -i "$f" "Download complete"
 }
 
 # 🎚️ Manual resolution
 choose() {
-    filename="%(title)s.%(ext)s"
+    filename="%(title)s_%(height)sp.%(ext)s"
     outdir="$HOME/Videos"
     mkdir -p "$outdir"
 
-    notify-send "Fetching..." "Available formats"
+    notify-send -i "$f" "Fetching..." "Available formats"
     format=$(yt-dlp -F "$url" | awk '/^-/{flag=1; next} flag' | rofi -dmenu -p "Choose format:" -theme "$theme2")
     [ -z "$format" ] && return 0
 
     format_id=$(awk '{print $1}' <<< "$format")
-    notify-send "🎬 Downloading..." "Format $format_id"
+    notify-send -i "$f" "🎬 Downloading..." "Format $format_id"
 
     yt-dlp -f "$format_id"+bestaudio/best \
         -o "$outdir/$filename" \
         "$url"
 
-    notify-send "Download complete"
+    notify-send -i "$f" "Download complete"
 }
 
 down() {
     res="$1"
-    filename="%(title)s_"${res}p".%(ext)s"
+    filename="%(title)s_%(height)sp.%(ext)s"
     outdir="$HOME/Videos"
     mkdir -p "$outdir"
 
@@ -95,18 +101,18 @@ down() {
         yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mp4 \
             -o "$outdir/$filename" \
             "$url" &
-        notify-send "🎬 Downloading" "Best Video"
+        notify-send -i "$f" "🎬 Downloading" "Best Video"
     else
         yt-dlp -f "bv[height<=$res]+bestaudio/best" \
             -o "$outdir/$filename" \
             "$url" &
-        notify-send "🎬 Downloading" "Max ${res}p (auto fallback)"
+        notify-send -i "$f" "Starting Download"
     fi
 }
 
 play_mp3() {
     mpv --no-video "$url" &
-    notify-send "Playing audio" 
+    notify-send -i "$f" "Playing audio" 
 }
 
 play_video() {
@@ -114,10 +120,10 @@ play_video() {
     
       if [ "$res" = "best" ]; then
             mpv "$url" & 
-            notify-send "Playing best video"
+            notify-send -i "$f" "Playing best video"
         else
             mpv --ytdl-format="bestvideo[height=$res]+bestaudio/best" "$url" &
-            notify-send "Playing ${res}p"
+            notify-send -i "$f" "Playing ${res}p"
       fi
 }
 

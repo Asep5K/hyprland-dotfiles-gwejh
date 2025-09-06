@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-thm=$HOME/.config/rofi/themes/sidebar-v2.rasi
+thm=$HOME/.config/rofi/themes/wall.rasi
 
 if pidof rofi > /dev/null; then
     pkill rofi
@@ -21,6 +21,6 @@ selected_path="${all_files[$selected_wallpaper]}"
 
 swww img "$selected_path" --transition-type any --transition-duration 2
 
-wal -i "$selected_path"
+wal -i "$selected_path" 
 
-$HOME/.config/hypr/scripts/wallpaper_effects.sh
+$HOME/.config/hypr/scripts/mako.sh

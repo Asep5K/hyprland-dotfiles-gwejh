@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 s=("Howdy my Sigma!" 
 "Consider taking a bath?" 

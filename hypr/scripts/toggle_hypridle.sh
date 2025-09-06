@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-f="$HOME/Pictures/kurumi/foto_008.jpg"
+f="/var/lib/AccountsService/icons/$USER"
 
 if pgrep -x hypridle > /dev/null; then
     killall hypridle

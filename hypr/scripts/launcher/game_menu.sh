@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OPTIONS="Minecraft Java\nMinecraft Bedrock\nOption 3\n❌ Keluar"
 

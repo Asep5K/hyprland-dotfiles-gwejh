@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 full_screenshot() {
     dir="$HOME/Pictures/Screenshot/"

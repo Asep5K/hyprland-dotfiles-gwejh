@@ -1,18 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+BAT_PATH="/sys/class/power_supply/BAT0"
 
-battery_status=$(cat /sys/class/power_supply/BAT0/status)
+if [ -d "$BAT_PATH" ]; then
+    battery_percentage=$(cat "$BAT_PATH/capacity")
+    battery_status=$(cat "$BAT_PATH/status")
 
-battery_icons=("󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹" "󰁹")
+    battery_icons=("󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹" "󰁹")
+    charging_icon="󰂄"
 
-charging_icon="󰂄"
+    icon_index=$((battery_percentage / 10))
+    battery_icon=${battery_icons[icon_index]}
 
-icon_index=$((battery_percentage / 10))
-battery_icon=${battery_icons[icon_index]}
+    if [ "$battery_status" = "Charging" ]; then
+        battery_icon="$charging_icon"
+    fi
 
-if [ "$battery_status" = "Charging" ]; then
-	battery_icon="$charging_icon"
+    echo "$battery_percentage% $battery_icon"
+else
+    # Laptop tanpa baterai → kasih icon plug/AC
+    ac_icon="⚡"   # icon plug/AC
+    echo "$ac_icon Ac"
 fi
-
-echo "$battery_percentage% $battery_icon"
