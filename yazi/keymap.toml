@@ -28,4 +28,3 @@ on   = [ "g", "l" ]
 run  = "cd $HOME/.local"
 desc = "Cd to ~/.local"
 
-
