@@ -10,11 +10,23 @@
     ],
     "modules-right": [
         "tray",
-        // "bluetooth",
+        "custom/battery",
         "network",
         "battery",
-        "pulseaudio"
+        "pulseaudio",
+        "custom/dnd"
     ],
+    "custom/battery": {
+        "exec": "~/.config/hypr/scripts/battery.sh",
+        "interval": 30,
+        "tooltip": false
+    },
+    "custom/dnd": {
+        "format": "",
+        "icon-size": 50,
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/dnd.sh"
+    },
     "custom/splash": {
         "exec": "hyprctl splash",
         "format": "{}",
