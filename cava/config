@@ -1,0 +1,11 @@
+[color]
+gradient = 1
+gradient_count = 8
+gradient_color_1 = '#e0e0e0'   # gray pucat
+gradient_color_2 = '#d6cfe8'   # ungu sangat pucat
+gradient_color_3 = '#cfc0e0'   # ungu pucat
+gradient_color_4 = '#c2b9d6'   # ungu soft
+gradient_color_5 = '#b8a9cc'   # ungu medium
+gradient_color_6 = '#a899c2'   # ungu sedikit lebih gelap
+gradient_color_7 = '#9b89b8'   # ungu gelap tapi tetap soft
+gradient_color_8 = '#8e79ae'   # ungu gelap paling bawah
