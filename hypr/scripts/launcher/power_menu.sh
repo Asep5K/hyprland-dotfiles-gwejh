@@ -5,6 +5,7 @@ if pidof rofi > /dev/null; then
 fi
 
 theme="$HOME/.config/rofi/themes/power_menu.rasi"
+f="/var/lib/AccountsService/icons/$USER"
 
 pk=(pkill -x)
 pk1=(pkill)
@@ -18,6 +19,7 @@ pkl() {
   "${pk[@]}" eww
   "${pk[@]}" code-oss
   "${pk[@]}" kitty
+  "${pk[@]}" foot
   "${pk[@]}" mako
   "${pk[@]}" waybar
   "${pk1[@]}" swww
@@ -29,7 +31,7 @@ pkl() {
 }
 
 pwf() {
-  notify-send -t 2000 "Shutdown in 5 seconds"
+  notify-send -t 2000 -i "$f" "Shutdown in 5 seconds"
   sleep 2
   pkl
   sleep 3
@@ -37,7 +39,7 @@ pwf() {
 }
 
 rbt() {
-  notify-send -t 2000 "Rebooting in 5 seconds"
+  notify-send -t 2000 -i "$f" "Rebooting in 5 seconds"
   sleep 2
   pkl
   sleep 3
@@ -83,7 +85,7 @@ case "$action" in
     ;;
   *)
     if [[ -n "$action" ]]; then
-      notify-send "Running command" "$action"
+      notify-send -i "$f" "Running command" "$action"
       bash -c "$action"
     fi
     ;;
