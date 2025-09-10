@@ -19,7 +19,6 @@ if pidof rofi > /dev/null; then
 fi
 
 theme="$HOME/.config/rofi/themes/screenshot.rasi"
-rc="$HOME/.config/hypr/scripts/record.sh"
 pid="/tmp/toggle_recording.pid"
 
 if [ -f "$pid" ]; then
