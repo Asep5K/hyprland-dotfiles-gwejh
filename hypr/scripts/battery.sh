@@ -30,6 +30,6 @@ if [ -d "$BAT_PATH" ]; then
     fi
 else
     # Laptop tanpa baterai sama sekali / pc
-    ac_icon="⚡"
-    echo "$ac_icon PC"
+    ac_icon=""
+    echo "$ac_icon"
 fi

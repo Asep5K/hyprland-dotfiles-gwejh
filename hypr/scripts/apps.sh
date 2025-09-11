@@ -74,7 +74,7 @@ apps() {
         ;;
         Clipboard)
         rofi_check
-        cliphist list | rofi -dmenu -p  "Clipboard" | cliphist decode | wl-copy12
+        cliphist list | rofi -dmenu -p  "Clipboard" | cliphist decode | wl-copy
         ;;
     esac 
 }

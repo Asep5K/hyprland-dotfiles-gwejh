@@ -28,6 +28,12 @@ prepare_env() {
     pkill -x mpvpaper 2> /dev/null
 }
 
+mpvpaper_check() {
+    if pgrep -x mpvpaper > /dev/null; then
+     pkill -x mpvpaper
+    fi
+}
+
 rofi_cmd() {
     rofi -dmenu -p " " -format i -theme "$thm"
 }
@@ -110,15 +116,15 @@ wallpaper_manager() {
             files=("$dir"/*)
             path="${files[$choice]}"
             mode=$(printf " With audio\n No audio" | rofi -dmenu -p " Mode" -theme "$thm2")
-            prepare_env
+            mpvpaper_check
             case "$mode" in
-                " With audio") mpvpaper -o "--loop" "*" "$path" & ;;
+                " With audio") mpvpaper -o "--loop --volume=150" "*" "$path" & ;;
                 " No audio") mpvpaper -o "--loop --no-audio" "*" "$path" & ;;
             esac
             ;;
         daemon)
             while true; do
-                wallpaper_manager next
+                wallpaper_manager next "$interval"
                 sleep "${interval:-300}"
             done
             ;;
