@@ -18,7 +18,11 @@ if pidof rofi > /dev/null; then
     pkill rofi
 fi
 
+<<<<<<< HEAD
 theme="$HOME/.config/rofi/themes/power_menu.rasi"
+=======
+theme="$HOME/.config/rofi/themes/screenshot.rasi"
+>>>>>>> 8f4e832f277cab6e74f992d06fa86d33542e4e82
 pid="/tmp/toggle_recording.pid"
 
 if [ -f "$pid" ]; then
