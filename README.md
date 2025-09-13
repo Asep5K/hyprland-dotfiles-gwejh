@@ -11,7 +11,8 @@ This repo contains configuration files, scripts, and the required packages to re
 ![](./preview/Keybind_list.png)  
 ![](./preview/Screenshot_menu.png)  
 ![](./preview/Power_menu.png)  
-![](./preview/Wifi_menu.png)  
+![](./preview/Wifi_menu.png) 
+![](./preview/Hyprlock.png)   
 
 ---
 
