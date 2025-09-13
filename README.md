@@ -67,4 +67,7 @@ bash -c install.sh
 - **grim** → screenshot utility  
 - **grimblast** → wrapper for easier screenshots  
 
+### Recording
+- **wf-recorder** → screen recording utility
+
 ---
