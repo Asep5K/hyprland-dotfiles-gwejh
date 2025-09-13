@@ -1,26 +1,64 @@
-MALAS MENANGGAPI
+# Hyprland Dotfiles
 
-Source eww bar, hyprlock.conf, hyprridle.conf: https://github.com/Mon4sm/monasm-dots
+My personal configuration for [Hyprland](https://github.com/hyprwm/Hyprland), focused on ricing, productivity, and minimalism.  
+This repo contains configuration files, scripts, and the required packages to replicate my setup.
 
-Source emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar:  https://github.com/ViegPhunt/Dotfiles
+## 📸 Screenshots
 
-Source rofi themes: https://github.com/newmanls/rofi-themes-collection
+![](./preview/Preview.png)  
+![](./preview/Wallpaper_selector.png)  
+![](./preview/Video_wallpaper_selector.png)  
+![](./preview/Keybind_list.png)  
+![](./preview/Screenshot_menu.png)  
+![](./preview/Power_menu.png)  
+![](./preview/Wifi_menu.png)  
 
-Source rofi-wifi-menu.sh:
-https://github.com/adi1090x/rofi.git
+---
 
-## Screenshots
+## 📑 Sources / Credits
 
-![](./preview/Preview.png)
+- **rofi-wifi-menu.sh** → [adi1090x/rofi](https://github.com/adi1090x/rofi)  
+- **eww bar, hyprlock.conf, hypridle.conf** → [Mon4sm/monasm-dots](https://github.com/Mon4sm/monasm-dots)  
+- **emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt/Dotfiles](https://github.com/ViegPhunt/Dotfiles)  
+- **rofi themes** → [newmanls/rofi-themes-collection](https://github.com/newmanls/rofi-themes-collection)  
 
-![](./preview/Wallpaper_selector.png)
+---
 
-![](./preview/Video_wallpaper_selector.png)
+## 📦 Requirements
 
-![](./preview/Keybind_list.png)
+### Core (Hyprland ecosystem)
+- **hyprland** → Wayland compositor
+- **hyprlock** → lockscreen
+- **hypridle** → idle management (auto lock/suspend)
 
-![](./preview/Screenshot_menu.png)
+### Terminal
+- **kitty** → GPU-based terminal emulator
+- **foot** → lightweight terminal emulator
 
-![](./preview/Power_menu.png)
+### UI & Widgets
+- **rofi-wayland** → app launcher
+- **waybar** → status bar
+- **eww** → widgets
+- **conky-cairo-wayland** → system monitor widget
+- **mako** → notification daemon
 
-![](./preview/Wifi_menu.png)
+### Wallpaper & Theming
+- **swww** → wallpaper daemon
+- **python-pywal** → generate colorscheme from wallpaper
+
+### CLI Utilities
+- **btop** → system monitor  
+- **yazi** → terminal file manager  
+- **wl-copy / wl-paste** → clipboard utilities  
+- **yad** → simple GUI dialogs  
+- **peaclock** → customizable clock  
+- **cava** → audio visualizer  
+
+### Screenshot
+- **grim** → screenshot utility  
+- **grimblast** → wrapper for easier screenshots  
+
+---
+
+## 📂 Repository Structure
+
