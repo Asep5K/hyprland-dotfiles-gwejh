@@ -10,7 +10,8 @@
 f="/var/lib/AccountsService/icons/$USER"
 
 anitext() {
-    s=("Howdy my Sigma!" 
+    s=("Howdy my Sigma!"
+    "I USE ARCH BTW" 
     "Consider taking a bath?" 
     "Arch is so GOATed UwU" 
     "VScode > Neovim FrFr"
@@ -76,19 +77,20 @@ weather() {
 }
 
 # jalankan di background
-anitext &
-PID_ANITEXT=$!
-weather &
-PID_WEATHER=$!
+# anitext &
+# PID_ANITEXT=$!
+# weather &
+# PID_WEATHER=$!
 
 # simpan PID untuk safety (opsional)
-echo "$PID_ANITEXT $PID_WEATHER" > /tmp/hypr_if_pids
+# echo "$PID_ANITEXT $PID_WEATHER" > /tmp/hypr_if_pids
 
 # jalankan hyprlock
 pidof hyprlock >/dev/null || hyprlock
 
 # setelah hyprlock keluar, otomatis kill hiburan
-kill $PID_ANITEXT $PID_WEATHER 2>/dev/null
-rm -f /tmp/hypr_if_pids
+# kill $PID_ANITEXT $PID_WEATHER 2>/dev/null
+# rm -f /tmp/hypr_if_pids 
+# rm -f /tmp/scripttext
 
 notify-send -i "$f" "Welcome back" "$USER"
