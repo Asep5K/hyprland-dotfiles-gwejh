@@ -18,3 +18,4 @@ peaclock
 cava
 grim
 grimblast-git
+wf-recorder
