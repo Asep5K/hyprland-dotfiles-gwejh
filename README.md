@@ -15,6 +15,15 @@ This repo contains configuration files, scripts, and the required packages to re
 
 ---
 
+## 🛠️ Install
+
+```bash
+git clone https://github.com/Asep5K/iuno-dots.git
+cd iuno-dots
+chmod +x install.sh
+bash -c install.sh
+```
+
 ## 📑 Sources / Credits
 
 - **rofi-wifi-menu.sh** → [adi1090x/rofi](https://github.com/adi1090x/rofi)  
@@ -37,9 +46,9 @@ This repo contains configuration files, scripts, and the required packages to re
 
 ### UI & Widgets
 - **rofi-wayland** → app launcher
+- **rofi-emoji** → emoji launcher
 - **waybar** → status bar
 - **eww** → widgets
-- **conky-cairo-wayland** → system monitor widget
 - **mako** → notification daemon
 
 ### Wallpaper & Theming
