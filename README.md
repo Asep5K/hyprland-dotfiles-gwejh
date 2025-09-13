@@ -62,3 +62,14 @@ This repo contains configuration files, scripts, and the required packages to re
 
 ## 📂 Repository Structure
 
+.
+├── hypr/           # Hyprland configs (hyprland.conf, hyprlock.conf, hypridle.conf, etc.)
+├── waybar/         # Waybar configs and styles
+├── rofi/           # Rofi themes and scripts (launchers, menus, etc.)
+├── eww/            # Eww bar and widgets
+├── mako/           # Notification daemon configs
+├── yazi/           # Yazi file manager config
+├── cava/           # Cava audio visualizer config
+├── preview/        # Screenshots / previews
+├── packages.txt    # List of required packages
+└── README.md       # Project documentation
