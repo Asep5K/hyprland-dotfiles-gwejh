@@ -12,7 +12,7 @@
         "tray",
         "custom/battery",
         "network",
-        "battery",
+        // "battery",
         "pulseaudio",
         "custom/dnd"
     ],
@@ -63,29 +63,29 @@
         "format-linked": "  Linked (No IP)",
         "format-disconnected": "  Disconnected",
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/launcher/rofi-wifi-menu.sh"
+        "on-click": "~/.config/hypr/scripts/rofi-wifi-menu.sh"
     },
-    "battery": {
-        "states": {
-            "good": 85,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-alt": "{icon} {capacity}%",
-        "format-icons": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
-        ],
-        "tooltip-format": "{time}",
-        "cursor": false
-    },
+    // "battery": {
+    //     "states": {
+    //         "good": 85,
+    //         "warning": 30,
+    //         "critical": 15
+    //     },
+    //     "format": "{icon} {capacity}%",
+    //     "format-full": "{icon} {capacity}%",
+    //     "format-plugged": " {capacity}%",
+    //     "format-charging": " {capacity}%",
+    //     "format-alt": "{icon} {capacity}%",
+    //     "format-icons": [
+    //         " ",
+    //         " ",
+    //         " ",
+    //         " ",
+    //         " "
+    //     ],
+    //     "tooltip-format": "{time}",
+    //     "cursor": false
+    // },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "  {volume}%",

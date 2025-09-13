@@ -8,7 +8,7 @@ if makoctl mode | grep -q "do-not-disturb"; then
     makoctl mode -r do-not-disturb
 else
     notify-send -i "$f" "Mode DND On"
-    sleep 5
+    sleep 3
     makoctl mode -a do-not-disturb
 fi
 
