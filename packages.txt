@@ -1,12 +1,10 @@
 hyprland
 hyprlock
 hypridle
-kitty
 foot
 rofi-wayland
 rofi-emoji
 waybar
-eww
 mako
 swww
 python-pywal
@@ -19,3 +17,4 @@ cava
 grim
 grimblast-git
 wf-recorder
+mpvpaper
