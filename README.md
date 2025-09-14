@@ -1,7 +1,10 @@
-# Hyprland Dotfiles
+# My Hyprland Setup 🖤
 
-My personal configuration for [Hyprland](https://github.com/hyprwm/Hyprland), focused on ricing, productivity, and minimalism.  
-This repo contains configuration files, scripts, and the required packages to replicate my setup.
+Personal configs, scripts & packages to try my desktop.  
+Mostly tinkering for fun, not a “ricing masterpiece.”  
+Use it if you like, edit it if you see something missing.  
+Happy Hyprlanding! 🚀
+
 
 ## 📸 Screenshots
 
