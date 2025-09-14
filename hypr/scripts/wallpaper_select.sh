@@ -48,19 +48,6 @@ update_mako() {
     # Reload mako supaya langsung berubah
     pkill -USR1 mako
 }
-update_hyprlock() {
-    local path="$1"
-    local lock_conf="$HOME/.config/hypr/hyprlock.conf"
-
-    [ -f "$lock_conf" ] || return 0
-
-    # pakai sed untuk ganti line path di blok background
-    sed -i "/^background{/,/}/{
-        /^\s*path = /c\\
-    path = $path
-    }" "$lock_conf"
-}
-
 
 # Fungsi utama, pilih tipe: foto/video/next
 wallpaper_manager() {
@@ -100,7 +87,7 @@ wallpaper_manager() {
             prepare_env
             swww img "$path" --transition-type any --transition-duration 2
             wal -i "$path"
-            update_hyprlock "$path"
+            ln -sf "$path" "$HOME/.cache/swww/image.jpg"
             update_mako
             ;;
         video)

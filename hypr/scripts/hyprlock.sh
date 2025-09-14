@@ -51,46 +51,18 @@ anitext() {
     done
 }
 
-weather() {
-    weathertext="/tmp/weathertext"
-    while true; do
-        city=$(curl -s https://ipinfo.io/json | grep -o '"city": *"[^"]*"' | cut -d '"' -f 4 | sed 's/ /%20/g')
-        weather=$(curl -s "https://wttr.in/$city?format=%25l%3A%20%25C%2C%20%25t")
-        weather_len=${#weather}
-        output=""
-        i=0
-        while [ $i -lt $weather_len ]; do
-            if [ $i -eq 30 ]; then
-                output="$output..."
-                break
-            fi
-            char=$(printf "%s" "$weather" | cut -c $((i + 1)))
-            output="$output$char"
-            i=$((i + 1))
-        done
-        if [ "$output" != "" ]; then
-            echo "$output" > "$weathertext"
-        fi
-        sleep 60
-    done
-
-}
-
 # jalankan di background
-# anitext &
-# PID_ANITEXT=$!
-# weather &
-# PID_WEATHER=$!
+anitext &
+PID_ANITEXT=$!
 
 # simpan PID untuk safety (opsional)
-# echo "$PID_ANITEXT $PID_WEATHER" > /tmp/hypr_if_pids
+echo "$PID_ANITEXT" > /tmp/hypr_if_pids
 
 # jalankan hyprlock
 pidof hyprlock >/dev/null || hyprlock
 
 # setelah hyprlock keluar, otomatis kill hiburan
-# kill $PID_ANITEXT $PID_WEATHER 2>/dev/null
-# rm -f /tmp/hypr_if_pids 
-# rm -f /tmp/scripttext
+kill $PID_ANITEXT $PID_WEATHER 2>/dev/null
+rm -f /tmp/hypr_if_pids /tmp/scripttext
 
 notify-send -i "$f" "Welcome back" "$USER"

@@ -19,8 +19,6 @@ pk1=(pkill)
 
 pkl() {
   # Kill apps yang aman dulu
-  "${pk[@]}" anitext.sh
-  "${pk[@]}" weather.sh
   "${pk[@]}" randomwallpaper.sh
   "${pk[@]}" yazi.sh
   "${pk[@]}" eww
@@ -29,7 +27,6 @@ pkl() {
   "${pk[@]}" foot
   "${pk[@]}" mako
   "${pk[@]}" waybar
-  "${pk1[@]}" swww
 
   # Brave & Spotify pakai SIGTERM (tidak paksa) biar cleanup lock
   "${pk[@]}" brave
@@ -79,9 +76,10 @@ case "$action" in
     fi
     ;;
   " Lock")
-    bash -c "$HOME/.config/hypr/scripts/hyprlock.sh"
+    loginctl lock-session
     ;;
   " Sleep")
+    loginctl lock-session
     systemctl suspend
     ;;
   " Logout")

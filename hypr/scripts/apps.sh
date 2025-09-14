@@ -10,6 +10,10 @@
 app=$1
 term="foot -e"
 thm="$HOME/.config/rofi/themes/wall.rasi"
+gm="sklauncher
+mcpelauncher-ui-qt"
+
+
 rofi_check() {
     if pidof rofi > /dev/null; then
         pkill rofi
@@ -46,8 +50,8 @@ apps() {
         Btop)
         exec $term btop > /dev/null 2>&1
         ;;
-        Kitty)
-        exec kitty > /dev/null 2>&1
+        Kdenlive)
+        exec kdenlive > /dev/null 2>&1
         ;;
         Tele)
         exec Telegram > /dev/null 2>&1
@@ -76,10 +80,17 @@ apps() {
         rofi_check
         cliphist list | rofi -dmenu -p  "Clipboard" | cliphist decode | wl-copy
         ;;
+        Game)
+        rofi_check
+        chosen=$(echo -e "$gm" | rofi -dmenu -p "Launch App")
+        if [ -n "$chosen" ]; then
+          $chosen &
+        fi
+        ;;
     esac 
 }
 case "$app" in
-    Menu|Spotify|Brave|Yazi|Cmus|Cava|Btop|Kitty|\
+    Menu|Spotify|Brave|Yazi|Cmus|Cava|Btop|Kdenlive|\
     Tele|Discord|Conky|Window|Foot|Code|Mpv|Emoji|\
-    Clipboard) apps "$app" ;;
+    Clipboard|Game) apps "$app" ;;
 esac

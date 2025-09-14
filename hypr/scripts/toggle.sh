@@ -24,9 +24,6 @@ toggle() {
             exec notify-send -t 5000 -i "$f"  "DATE & TIME" \
             "$(LC_TIME=en_US.UTF-8 date '+%A,%B %d,%Y\n%H:%M:%S')" 
             ;;
-        Eww)
-            pkill eww || eww open bar_widget > /dev/null 2>&1 &
-            ;;
         Waybar)
             if pgrep -x waybar > /dev/null; then
                 pkill -x  waybar 
@@ -38,5 +35,5 @@ toggle() {
 }
 
 case "$1" in 
-    Hypridle|Clock|Eww|Waybar) toggle "$1" ;;
+    Hypridle|Clock|Waybar) toggle "$1" ;;
 esac
