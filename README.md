@@ -22,14 +22,14 @@ This repo contains configuration files, scripts, and the required packages to re
 git clone https://github.com/Asep5K/iuno-dots.git
 cd iuno-dots
 chmod +x install.sh
-bash -c install.sh
+./install.sh
 ```
 
 ## 📑 Sources / Credits
 
 - **rofi-wifi-menu.sh** → [adi1090x/rofi](https://github.com/adi1090x/rofi)  
-- **eww bar, hyprlock.conf, hypridle.conf** → [Mon4sm/monasm-dots](https://github.com/Mon4sm/monasm-dots)  
-- **emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt/Dotfiles](https://github.com/ViegPhunt/Dotfiles)  
+- **hyprlock.conf, hypridle.conf, hypridle.sh** → [Mon4sm/monasm-dots](https://github.com/Mon4sm/monasm-dots)  
+- **hyprlock.conf, emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt/Dotfiles](https://github.com/ViegPhunt/Dotfiles)  
 - **rofi themes** → [newmanls/rofi-themes-collection](https://github.com/newmanls/rofi-themes-collection)  
 
 ---
@@ -42,19 +42,18 @@ bash -c install.sh
 - **hypridle** → idle management (auto lock/suspend)
 
 ### Terminal
-- **kitty** → GPU-based terminal emulator
 - **foot** → lightweight terminal emulator
 
 ### UI & Widgets
 - **rofi-wayland** → app launcher
 - **rofi-emoji** → emoji launcher
 - **waybar** → status bar
-- **eww** → widgets
 - **mako** → notification daemon
 
 ### Wallpaper & Theming
 - **swww** → wallpaper daemon
 - **python-pywal** → generate colorscheme from wallpaper
+- **mpvpaper** → video wallpaper
 
 ### CLI Utilities
 - **btop** → system monitor  
