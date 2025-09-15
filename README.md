@@ -30,7 +30,7 @@ chmod +x install.sh
 
 ## 📑 Sources / Credits
 
-- **rofi-wifi-menu.sh** → [adi1090x/rofi](https://github.com/adi1090x/rofi)  
+- **rofi-wifi-menu.sh** → [ericmurphyxyz](https://github.com/ericmurphyxyz/rofi-wifi-menu/tree/master)  
 - **hyprlock.conf, hypridle.conf, hypridle.sh** → [Mon4sm/monasm-dots](https://github.com/Mon4sm/monasm-dots)  
 - **hyprlock.conf, emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt/Dotfiles](https://github.com/ViegPhunt/Dotfiles)  
 - **rofi themes** → [newmanls/rofi-themes-collection](https://github.com/newmanls/rofi-themes-collection)  
