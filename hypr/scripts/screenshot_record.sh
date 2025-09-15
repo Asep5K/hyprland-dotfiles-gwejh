@@ -149,7 +149,7 @@ if [ -n "$1" ]; then
 else
     # kalau nggak ada argumen → buka rofi
     options="FULL\nAREA\nWINDOW\nCLIPBOARD\n$record_status"
-    choice=$(echo -e "$options" | rofi -dmenu -p "    SCREENSHOOT/RECORD" -theme "$theme")
+    choice=$(echo -e "$options" | rofi -dmenu -p "       SCREENSHOT/RECORD" -theme "$theme")
 
         [ -z "$choice" ] && exit 0
 

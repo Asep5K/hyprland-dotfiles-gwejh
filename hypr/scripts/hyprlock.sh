@@ -10,6 +10,8 @@
 f="/var/lib/AccountsService/icons/$USER"
 
 anitext() {
+# Source: Mon4sm
+# URL: https://github.com/Mon4sm/monasm-dots/blob/main/.config/hypr/scripts/text_animation/anitext.sh
     s=("Howdy my Sigma!"
     "I USE ARCH BTW" 
     "Consider taking a bath?" 

@@ -14,40 +14,104 @@ fi
 theme="$HOME/.config/rofi/themes/power_menu.rasi"
 f="/var/lib/AccountsService/icons/$USER"
 
-pk=(pkill -x)
-pk1=(pkill)
+daemon=( "wallpaper_select.sh" "mako" "swww-daemon" "wl-paste" )
+apps=( "code-oss" "brave" "foot" "Telegram" "spotify" "electron" "yazi" )
 
-pkl() {
-  # Kill apps yang aman dulu
-  "${pk[@]}" randomwallpaper.sh
-  "${pk[@]}" yazi.sh
-  "${pk[@]}" eww
-  "${pk[@]}" code-oss
-  "${pk[@]}" kitty
-  "${pk[@]}" foot
-  "${pk[@]}" mako
-  "${pk[@]}" waybar
+kill_daemon() {
+  for d in "${daemon[@]}"; do
+    if pgrep -f "$d" > /dev/null; then
+      pkill -f "$d"
+    fi
+  done
+}
 
-  # Brave & Spotify pakai SIGTERM (tidak paksa) biar cleanup lock
-  "${pk[@]}" brave
-  "${pk[@]}" spotify
-  "${pk[@]}" Telegram
+kill_apps() {
+  for app in "${apps[@]}"; do
+    if pgrep -x "$app" > /dev/null; then
+      pkill -x "$app"
+    fi
+  done
+}
+
+closewindow() {
+# Source: Suchith Sridhar’s dotfiles
+# URL: https://github.com/SuchithSridhar/nixos-dotfiles/blob/60b591a3f0d93c65ef9d25eb36e3a4f121bb3fb2/scripts/power-controls
+
+    BRAVE=$(hyprctl clients | grep "class: brave-browser" | wc -l)
+    CHROMIUM=$(hyprctl clients | grep "class: chromium" | wc -l)
+    FIREFOX=$(hyprctl clients | grep "class: firefox" | wc -l)
+
+    if [ "$BRAVE" -gt "1" ]; then
+        notify-send -i "$f" "power controls" "Brave multiple windows open"
+        exit 1
+    elif [ "$CHROMIUM" -gt "1" ]; then
+        notify-send -i "$f" "power controls" "Chromium multiple windows open"
+        exit 1
+    elif [ "$FIREFOX" -gt "1" ]; then
+        notify-send -i "$f" "power controls" "Firefox multiple windows open"
+        exit 1
+    fi
+
+    sleep 3
+
+    # close all client windows
+    # required for graceful exit since many apps aren't good SIGNAL citizens
+    mkdir -p /tmp/hypr
+    HYPRCMDS=$(hyprctl -j clients | jq -j '.[] | "dispatch closewindow address:\(.address); "')
+    hyprctl --batch "$HYPRCMDS" >> /tmp/hypr/hyprexitwithgrace.log 2>&1
+
+    notify-send -i "$f" "power controls" "Closing Applications..."
+
+    sleep 2
+
+    COUNT=$(hyprctl clients | grep "class:" | wc -l)
+    if [ "$COUNT" -eq "0" ]; then
+        notify-send -i "$f" "power controls" "Closed Applications."
+        return
+    else
+        notify-send -i "$f" "power controls" "Some apps didn't close. Not shutting down."
+        exit 1
+    fi
+}
+
+lock() {
+  if ! pidof hypridle > /dev/null; then
+     hypridle &
+  fi
+  loginctl lock-session
 }
 
 pwf() {
-  notify-send -t 2000 -i "$f" "Shutdown in 5 seconds"
-  sleep 2
-  pkl
-  sleep 3
-  systemctl poweroff
+  if confirm "Are you sure you want to shutdown?"; then
+    closewindow
+   sleep 1
+   kill_daemon
+   sleep 1
+   kill_apps
+   sleep 3
+    systemctl poweroff
+  fi
 }
 
 rbt() {
-  notify-send -t 2000 -i "$f" "Rebooting in 5 seconds"
-  sleep 2
-  pkl
-  sleep 3
-  systemctl reboot
+    if confirm "Are you sure you want to reboot?"; then
+    closewindow
+    sleep 1
+    kill_daemon
+    sleep 1
+    kill_apps
+    sleep 3
+    systemctl reboot
+  fi
+}
+
+logout() {
+  if confirm "Are you sure you want to logout?"; then
+    closewindow
+    kill_daemon
+    kill_apps
+    hyprctl dispatch exit
+  fi
 }
 
 confirm() {
@@ -66,27 +130,20 @@ action=$(echo -e "$options" | rofi -dmenu -p "               POWER MENU" -theme 
 
 case "$action" in
   " Shutdown")
-    if confirm "Are you sure you want to shutdown?"; then
-      pwf
-    fi
+    pwf
     ;;
   " Reboot")
-    if confirm "Are you sure you want to reboot?"; then
-      rbt
-    fi
+    rbt
     ;;
   " Lock")
-    loginctl lock-session
+    lock
     ;;
   " Sleep")
-    loginctl lock-session
+    lock
     systemctl suspend
     ;;
   " Logout")
-    if confirm "Are you sure you want to logout?"; then
-      pkl
-      hyprctl dispatch exit
-    fi
+    logout
     ;;
   *)
     if [[ -n "$action" ]]; then

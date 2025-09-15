@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Source: ericmurphyxyz
+# URL: https://github.com/ericmurphyxyz/rofi-wifi-menu/blob/master/rofi-wifi-menu.sh
+
 # ██╗    ██╗██╗███████╗██╗    ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
 # ██║    ██║██║██╔════╝██║    ████╗ ████║██╔════╝████╗  ██║██║   ██║
 # ██║ █╗ ██║██║█████╗  ██║    ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
