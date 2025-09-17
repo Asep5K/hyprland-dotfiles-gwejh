@@ -21,56 +21,59 @@ Happy Hyprlanding! 🚀
 
 ## 🛠️ Install
 
+⚠️ Currently the installer script only supports Arch Linux (and AUR helpers like yay/paru).  
+Other distros are not supported out of the box.
 ```bash
 git clone https://github.com/Asep5K/iuno-dots.git
 cd iuno-dots
 chmod +x install.sh
 ./install.sh
 ```
+> ℹ️ Note: The installer will automatically back up your existing configs before applying mine.  
 
 ## 📑 Sources / Credits
 
 - **rofi-wifi-menu.sh** → [ericmurphyxyz](https://github.com/ericmurphyxyz/rofi-wifi-menu/tree/master)  
-- **hyprlock.conf, hypridle.conf, hypridle.sh** → [Mon4sm/monasm-dots](https://github.com/Mon4sm/monasm-dots)  
-- **hyprlock.conf, emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt/Dotfiles](https://github.com/ViegPhunt/Dotfiles)  
-- **rofi themes** → [newmanls/rofi-themes-collection](https://github.com/newmanls/rofi-themes-collection)  
+- **hyprlock.conf, hypridle.conf, hypridle.sh** → [Mon4sm](https://github.com/Mon4sm/monasm-dots)  
+- **hyprlock.conf, emoji_launcher.sh, wallpaper_select.sh, clipboard_launcher.sh, key_hints.sh, waybar** → [ViegPhunt](https://github.com/ViegPhunt/Dotfiles)  
+- **rofi themes** → [newmanls](https://github.com/newmanls/rofi-themes-collection)  
 
 ---
 
 ## 📦 Requirements
 
 ### Core (Hyprland ecosystem)
-- **hyprland** → Wayland compositor
-- **hyprlock** → lockscreen
-- **hypridle** → idle management (auto lock/suspend)
+- [**Hyprland**](https://github.com/hyprwm/Hyprland) → Wayland compositor
+- [**hyprlock**](https://github.com/hyprwm/hyprlock) → lockscreen
+- [**hypridle**](https://github.com/hyprwm/hypridle) → idle management (auto lock/suspend)
 
-### Terminal
-- **foot** → lightweight terminal emulator
+### 🖥️ Terminal
+- [**foot**](https://github.com/r-c-f/foot) → lightweight terminal emulator
 
 ### UI & Widgets
-- **rofi-wayland** → app launcher
-- **rofi-emoji** → emoji launcher
-- **waybar** → status bar
-- **mako** → notification daemon
+- [**rofi-wayland**](https://github.com/in0ni/rofi-wayland) → app launcher
+- [**rofi-emoji**](https://github.com/Mange/rofi-emoji) → emoji launcher
+- [**Waybar**](https://github.com/Alexays/Waybar) → status bar
+- [**mako**](https://github.com/emersion/mako) → notification daemon
 
-### Wallpaper & Theming
-- **swww** → wallpaper daemon
-- **python-pywal** → generate colorscheme from wallpaper
-- **mpvpaper** → video wallpaper
+### 🎨 Wallpaper & Theming
+- [**swww**](https://github.com/LGFae/swww) → wallpaper daemon
+- [**python-pywal**](https://github.com/dylanaraps/pywal) → generate colorscheme from wallpaper
+- [**mpvpaper**](https://github.com/GhostNaN/mpvpaper) → video wallpaper
 
 ### CLI Utilities
-- **btop** → system monitor  
-- **yazi** → terminal file manager  
-- **wl-copy / wl-paste** → clipboard utilities  
-- **yad** → simple GUI dialogs  
-- **peaclock** → customizable clock  
-- **cava** → audio visualizer  
+- [**btop**](https://github.com/aristocratos/btop) → system monitor  
+- [**yazi**](https://github.com/sxyazi/yazi) → terminal file manager  
+- [**wl-clipboard**](https://github.com/bugaevc/wl-clipboard) → clipboard utilities  
+- [**yad**](https://github.com/v1cont/yad) → simple GUI dialogs  
+- [**peaclock**](https://github.com/octobanana/peaclock) → customizable clock  
+- [**cava**](https://github.com/karlstav/cava) → audio visualizer  
 
-### Screenshot
-- **grim** → screenshot utility  
-- **grimblast** → wrapper for easier screenshots  
+### 📸 Screenshot
+- [**grim**](https://github.com/emersion/grim) → screenshot utility  
+- [**grimblast**](https://github.com/hyprwm/contrib/tree/main/grimblast) → wrapper for easier screenshots  
 
-### Recording
-- **wf-recorder** → screen recording utility
+### 🎥 Recording
+- [**wf-recorder**](https://github.com/ammen99/wf-recorder) → screen recording utility
 
 ---
